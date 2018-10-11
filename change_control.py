@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 
 def on_start(container):
     phantom.debug('on_start() called')
-    
+    phantom.set_action_limit(15)
     # call 'create_ticket_1' block
     create_ticket_1(container=container)
 
