@@ -81,7 +81,7 @@ def send_email_1(action=None, success=None, container=None, results=None, handle
     formatted_data_1 = phantom.get_format_data(name='format_1')
 
     parameters = []
-    
+    phantom.error(save_data_key)
     # build parameters list for 'send_email_1' call
     parameters.append({
         'body': formatted_data_1,
