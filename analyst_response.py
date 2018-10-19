@@ -68,7 +68,7 @@ def get_case_note_count(action=None, success=None, container=None, results=None,
             
         save_data_key = phantom.save_data(artifacts_created, key=None)
         phantom.debug(save_data_key)
-        phantom.clear(save_data_key)
+        phantom.clear_data(save_data_key)
         prompt_1(container=container)
         
     return

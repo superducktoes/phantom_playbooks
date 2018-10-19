@@ -7,7 +7,7 @@
             "clean": true,
             "code_block": "import requests\nsave_data_key = \"\"",
             "description": "",
-            "hash": "77480f4e2b88dd62850b385b831d638deee0d8a1",
+            "hash": "a3cb872d5dab3bd34780856bd5466a09e3229759",
             "joint": {
                 "cells": [
                     {
@@ -2016,7 +2016,7 @@
                         "title": "Generic",
                         "type": "coa.Action",
                         "warn": false,
-                        "z": 154
+                        "z": 156
                     },
                     {
                         "action": "no op",
@@ -2204,7 +2204,7 @@
                         "connection_name": "",
                         "connection_type": "",
                         "custom_callback": "",
-                        "custom_code": "def get_case_note_count(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None):\n    phantom.debug('no_op_1() called')\n    \n    # get the container id and phantom url to format for the request\n    container_id = container.get('id', None)\n    phantom_url = phantom.get_base_url()\n    request_url = \"{}/rest/container/{}/phases\".format(str(phantom_url), str(container_id))\n    \n    # make the request\n    r = requests.get(request_url, auth=(\"admin\",\"password\"), verify=False).json()\n    \n    # check to see if all notes fields are filled out\n    notes_counter = 0\n    for i in r[\"data\"][0][\"tasks\"]:\n        phantom.debug(i)\n        if i[\"notes\"]:\n            notes_counter = notes_counter + 1\n    \n    artifacts_created = []\n    # if all the fields are filled out prompt before emailing, if not sleep and check again\n    if notes_counter != 3:\n        no_op_2(container=container, handle=notes_counter)\n    else:\n        for i in r[\"data\"][0][\"tasks\"]:\n            raw = {}\n            cef = {}\n            cef['container_note'] = i[\"notes\"][0][\"content\"]\n    \n            success, message, artifact_id = phantom.add_artifact(\n                container=container, raw_data=raw, cef_data=cef, label='note',\n                name='container note', severity='low',\n                identifier=None,\n                artifact_type='note')\n            \n            artifacts_created.append(artifact_id)\n            \n        save_data_key = phantom.save_data(artifacts_created, key=None)\n        phantom.debug(save_data_key)\n        phantom.clear(save_data_key)\n        prompt_1(container=container)\n        \n    return",
+                        "custom_code": "def get_case_note_count(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None):\n    phantom.debug('no_op_1() called')\n    \n    # get the container id and phantom url to format for the request\n    container_id = container.get('id', None)\n    phantom_url = phantom.get_base_url()\n    request_url = \"{}/rest/container/{}/phases\".format(str(phantom_url), str(container_id))\n    \n    # make the request\n    r = requests.get(request_url, auth=(\"admin\",\"password\"), verify=False).json()\n    \n    # check to see if all notes fields are filled out\n    notes_counter = 0\n    for i in r[\"data\"][0][\"tasks\"]:\n        phantom.debug(i)\n        if i[\"notes\"]:\n            notes_counter = notes_counter + 1\n    \n    artifacts_created = []\n    # if all the fields are filled out prompt before emailing, if not sleep and check again\n    if notes_counter != 3:\n        no_op_2(container=container, handle=notes_counter)\n    else:\n        for i in r[\"data\"][0][\"tasks\"]:\n            raw = {}\n            cef = {}\n            cef['container_note'] = i[\"notes\"][0][\"content\"]\n    \n            success, message, artifact_id = phantom.add_artifact(\n                container=container, raw_data=raw, cef_data=cef, label='note',\n                name='container note', severity='low',\n                identifier=None,\n                artifact_type='note')\n            \n            artifacts_created.append(artifact_id)\n            \n        save_data_key = phantom.save_data(artifacts_created, key=None)\n        phantom.debug(save_data_key)\n        phantom.clear_data(save_data_key)\n        prompt_1(container=container)\n        \n    return",
                         "custom_join": "",
                         "custom_name": "get_case_note_count",
                         "delay": 0,
@@ -2302,7 +2302,7 @@
                         "title": "Generic",
                         "type": "coa.Action",
                         "warn": false,
-                        "z": 155
+                        "z": 157
                     }
                 ]
             },
@@ -2311,7 +2311,7 @@
         "schema": 3,
         "version": "4.1.94"
     },
-    "create_time": "2018-10-19T04:58:11.640902+00:00",
+    "create_time": "2018-10-19T04:58:47.060400+00:00",
     "draft_mode": false,
     "labels": [
         "*"
