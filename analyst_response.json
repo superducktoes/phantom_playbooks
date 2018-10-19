@@ -7,7 +7,7 @@
             "clean": true,
             "code_block": "import requests\nsave_data_key = []",
             "description": "",
-            "hash": "6eedc5090b79dc9fb93f10366c2e22b72a71f768",
+            "hash": "bd7e485f5bbd53f49d6a53457b5e689f18ef4ca1",
             "joint": {
                 "cells": [
                     {
@@ -2216,7 +2216,7 @@
                         "connection_name": "send email, prompt",
                         "connection_type": "action",
                         "custom_callback": "",
-                        "custom_code": "def on_finish(container, summary):\n    phantom.debug('on_finish() called')\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all detals of actions \n    # can be collected here.\n    phantom.debug(save_data_key[0])\n    artifacts_created = phantom.get_data(save_data_key[0],clear_data=True)\n    phantom.debug(artifacts_created)\n    phantom.clear_data(save_data_key)\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n    return",
+                        "custom_code": "def on_finish(container, summary):\n    phantom.debug('on_finish() called')\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all detals of actions \n    # can be collected here.\n    phantom.debug(save_data_key[0])\n    artifacts_created = phantom.get_data(save_data_key[0],clear_data=True)\n    for i in artifacts_created:\n        phantom.delete_artifact(artifact_id=i)\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n    return",
                         "custom_join": "",
                         "custom_name": "",
                         "description": "",
@@ -2305,7 +2305,7 @@
                         "title": "END",
                         "type": "coa.StartEnd",
                         "warn": false,
-                        "z": 177
+                        "z": 179
                     }
                 ]
             },
@@ -2314,7 +2314,7 @@
         "schema": 3,
         "version": "4.1.94"
     },
-    "create_time": "2018-10-19T05:11:53.287188+00:00",
+    "create_time": "2018-10-19T05:14:10.726559+00:00",
     "draft_mode": false,
     "labels": [
         "*"

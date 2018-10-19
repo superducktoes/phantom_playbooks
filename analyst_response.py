@@ -175,8 +175,8 @@ def on_finish(container, summary):
     # can be collected here.
     phantom.debug(save_data_key[0])
     artifacts_created = phantom.get_data(save_data_key[0],clear_data=True)
-    phantom.debug(artifacts_created)
-    phantom.clear_data(save_data_key)
+    for i in artifacts_created:
+        phantom.delete_artifact(artifact_id=i)
 
     # summary_json = phantom.get_summary()
     # if 'result' in summary_json:
