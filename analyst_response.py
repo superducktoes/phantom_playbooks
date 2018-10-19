@@ -45,7 +45,7 @@ def get_case_note_count(action=None, success=None, container=None, results=None,
     notes_counter = 0
     for i in r["data"][0]["tasks"]:
         phantom.debug(i)
-        if i["status"] == 0:
+        if i["status"] == 1:
             notes_counter = notes_counter + 1
     
     artifacts_created = []
