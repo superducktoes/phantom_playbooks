@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 # Start - Global Code Block
 
 import requests
-save_data_key = ""
+save_data_key = []
 
 # End - Global Code block
 ##############################
@@ -66,8 +66,8 @@ def get_case_note_count(action=None, success=None, container=None, results=None,
             
             artifacts_created.append(artifact_id)
             
-        save_data_key = phantom.save_data(artifacts_created, key=None)
-        phantom.debug(save_data_key)
+        save_data_key.append(phantom.save_data(artifacts_created, key=None))
+        phantom.debug(save_data_key[0])
         prompt_1(container=container)
         
     return
@@ -135,7 +135,7 @@ def prompt_1(action=None, success=None, container=None, results=None, handle=Non
 
 def decision_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None):
     phantom.debug('decision_2() called')
-    phantom.error(save_data_key)
+
     # check for 'if' condition 1
     matched_artifacts_1, matched_results_1 = phantom.condition(
         container=container,
