@@ -7,7 +7,6 @@
             "clean": true,
             "code_block": "import requests\nsave_data_key = []",
             "description": "",
-            "hash": "ec6e5bb0b9a7f1264f0173ed6d67c4af50abce15",
             "joint": {
                 "cells": [
                     {
@@ -495,7 +494,7 @@
                                 "opacity": 1
                             },
                             "g.delete": {
-                                "display": "block"
+                                "display": "none"
                             },
                             "g.error": {
                                 "opacity": 0
@@ -1820,9 +1819,6 @@
                             "g.error": {
                                 "opacity": 0
                             },
-                            "g.error image": {
-                                "xlink:href": "/inc/coa/img/block_icon_error.svg"
-                            },
                             "g.icon image": {
                                 "ref-x": 13,
                                 "xlink:href": "/inc/coa/img/block_icon_start.svg"
@@ -1835,7 +1831,7 @@
                         "callback_code": "# read-only block view not available",
                         "callback_start": 1,
                         "callsback": false,
-                        "connected_to_start": false,
+                        "connected_to_start": true,
                         "connection_name": "",
                         "connection_type": "",
                         "custom_callback": "",
@@ -2024,6 +2020,9 @@
                             },
                             "g.notes": {
                                 "display": "block"
+                            },
+                            "g.notes image": {
+                                "opacity": 1
                             }
                         },
                         "block_code": "def decision_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None):\n    phantom.debug('decision_4() called')\n    \n    in_case_param = container.get('in_case', None)\n\n    # check for 'if' condition 1\n    matched_artifacts_1, matched_results_1 = phantom.condition(\n        container=container,\n        conditions=[\n            [in_case_param, \"==\", False],\n        ])\n\n    # call connected blocks if condition 1 matched\n    if matched_artifacts_1 or matched_results_1:\n        promote_to_case_1(action=action, success=success, container=container, results=results, handle=handle)\n        return\n\n    # call connected blocks for 'else' condition 2\n    join_get_case_note_count(action=action, success=success, container=container, results=results, handle=handle)\n\n    return",
@@ -2532,7 +2531,7 @@
                         "custom_name": "",
                         "delay": 0,
                         "description": "",
-                        "has_custom": false,
+                        "has_custom": true,
                         "has_custom_block": true,
                         "has_custom_callback": false,
                         "has_custom_join": false,
@@ -2686,6 +2685,9 @@
                             },
                             "g.notes": {
                                 "display": "block"
+                            },
+                            "g.notes image": {
+                                "opacity": 1
                             }
                         },
                         "block_code": "# read-only block view not available",
@@ -2700,7 +2702,7 @@
                         "custom_join": "",
                         "custom_name": "",
                         "description": "",
-                        "has_custom": false,
+                        "has_custom": true,
                         "has_custom_block": true,
                         "has_custom_callback": false,
                         "has_custom_join": false,
