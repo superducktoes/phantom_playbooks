@@ -175,9 +175,9 @@ def on_finish(container, summary):
     # summary of all the action and/or all detals of actions 
     # can be collected here.
     phantom.debug(save_data_key)
-    artifacts_created = phantom.get_data(save_data_key)
+    '''artifacts_created = phantom.get_data(save_data_key)
     phantom.debug(artifacts_created)
-    phantom.clear_data(save_data_key)
+    phantom.clear_data(save_data_key)'''
 
     # summary_json = phantom.get_summary()
     # if 'result' in summary_json:
