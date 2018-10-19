@@ -108,6 +108,11 @@ def send_email_1(action=None, success=None, container=None, results=None, handle
     })
 
     phantom.act("send email", parameters=parameters, assets=['smtp'], name="send_email_1")
+    
+    # clean up the artifacts we created
+    artifacts_created = phantom.get_data(save_data_key[0],clear_data=True)
+    for i in artifacts_created:
+        phantom.delete_artifact(artifact_id=i)
 
     return
 
@@ -185,11 +190,12 @@ def format_1(action=None, success=None, container=None, results=None, handle=Non
 
 def playbook_github_repo_analyst_responses_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None):
     phantom.debug('playbook_github_repo_analyst_responses_1() called')
-    phantom.error(save_data_key[0])
+    
+    # delete the artifacts created before re-calling the playbook
     artifacts_created = phantom.get_data(save_data_key[0],clear_data=True)
     for i in artifacts_created:
         phantom.delete_artifact(artifact_id=i)
-    phantom.error(artifacts_created)
+        
     # call playbook "github_repo/analyst_responses", returns the playbook_run_id
     playbook_run_id = phantom.playbook("github_repo/analyst_response", container=container)
 
