@@ -16,10 +16,9 @@ save_data_key = []
 
 def on_start(container):
     phantom.debug('on_start() called')
-    phantom.debug(container.get('container_type', None))
-    phantom.error(container.get('in_case', None))
-    # call 'promote_to_case_1' block
-    promote_to_case_1(container=container)
+    
+    # call 'decision_4' block
+    decision_4(container=container)
 
     return
 
@@ -27,7 +26,7 @@ def promote_to_case_1(action=None, success=None, container=None, results=None, h
     phantom.debug('promote_to_case_1() called')
 
     phantom.promote(container=container, template="responses")
-    get_case_note_count(container=container)
+    join_get_case_note_count(container=container)
 
     return
 
@@ -70,6 +69,20 @@ def get_case_note_count(action=None, success=None, container=None, results=None,
         save_data_key.append(phantom.save_data(artifacts_created, key=None))
         prompt_1(container=container)
         
+    return
+
+def join_get_case_note_count(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None):
+    phantom.debug('join_get_case_note_count() called')
+    
+    # if the joined function has already been called, do nothing
+    if phantom.get_run_data(key='join_get_case_note_count_called'):
+        return
+
+    # no callbacks to check, call connected block "get_case_note_count"
+    phantom.save_run_data(key='join_get_case_note_count_called', value='get_case_note_count', auto=True)
+
+    get_case_note_count(container=container, handle=handle)
+    
     return
 
 def send_email_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None):
@@ -176,7 +189,29 @@ def playbook_github_repo_analyst_responses_1(action=None, success=None, containe
     for i in artifacts_created:
         phantom.delete_artifact(artifact_id=i)
     # call playbook "github_repo/analyst_responses", returns the playbook_run_id
-    playbook_run_id = phantom.playbook("github_repo/analyst_responses", container=container)
+    playbook_run_id = phantom.playbook("github_repo/analyst_response", container=container)
+
+    return
+
+def decision_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None):
+    phantom.debug('decision_4() called')
+    
+    in_case_param = container.get('in_case', None)
+
+    # check for 'if' condition 1
+    matched_artifacts_1, matched_results_1 = phantom.condition(
+        container=container,
+        conditions=[
+            [in_case_param, "==", False],
+        ])
+
+    # call connected blocks if condition 1 matched
+    if matched_artifacts_1 or matched_results_1:
+        promote_to_case_1(action=action, success=success, container=container, results=results, handle=handle)
+        return
+
+    # call connected blocks for 'else' condition 2
+    join_get_case_note_count(action=action, success=success, container=container, results=results, handle=handle)
 
     return
 
