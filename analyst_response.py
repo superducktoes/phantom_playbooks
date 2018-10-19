@@ -26,7 +26,7 @@ def promote_to_case_1(action=None, success=None, container=None, results=None, h
     phantom.debug('promote_to_case_1() called')
 
     phantom.promote(container=container, template="responses")
-    join_get_case_note_count(container=container)
+    get_case_note_count(container=container)
 
     return
 
@@ -45,7 +45,7 @@ def get_case_note_count(action=None, success=None, container=None, results=None,
     notes_counter = 0
     for i in r["data"][0]["tasks"]:
         phantom.debug(i)
-        if i["status"] == 1:
+        if i["notes"]:
             notes_counter = notes_counter + 1
     
     artifacts_created = []
@@ -69,20 +69,6 @@ def get_case_note_count(action=None, success=None, container=None, results=None,
         save_data_key.append(phantom.save_data(artifacts_created, key=None))
         prompt_1(container=container)
         
-    return
-
-def join_get_case_note_count(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None):
-    phantom.debug('join_get_case_note_count() called')
-    
-    # if the joined function has already been called, do nothing
-    if phantom.get_run_data(key='join_get_case_note_count_called'):
-        return
-
-    # no callbacks to check, call connected block "get_case_note_count"
-    phantom.save_run_data(key='join_get_case_note_count_called', value='get_case_note_count', auto=True)
-
-    get_case_note_count(container=container, handle=handle)
-    
     return
 
 def send_email_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None):
@@ -163,7 +149,6 @@ def decision_2(action=None, success=None, container=None, results=None, handle=N
         return
 
     # call connected blocks for 'else' condition 2
-    join_get_case_note_count(action=action, success=success, container=container, results=results, handle=handle)
 
     return
 
