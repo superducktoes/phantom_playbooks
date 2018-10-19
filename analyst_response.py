@@ -149,6 +149,7 @@ def decision_2(action=None, success=None, container=None, results=None, handle=N
         return
 
     # call connected blocks for 'else' condition 2
+    playbook_github_repo_analyst_responses_1(action=action, success=success, container=container, results=results, handle=handle)
 
     return
 
@@ -165,6 +166,16 @@ def format_1(action=None, success=None, container=None, results=None, handle=Non
     phantom.format(container=container, template=template, parameters=parameters, name="format_1")
 
     send_email_1(container=container)
+
+    return
+
+def playbook_github_repo_analyst_responses_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None):
+    phantom.debug('playbook_github_repo_analyst_responses_1() called')
+    artifacts_created = phantom.get_data(save_data_key[0],clear_data=True)
+    for i in artifacts_created:
+        phantom.delete_artifact(artifact_id=i)
+    # call playbook "github_repo/analyst_responses", returns the playbook_run_id
+    playbook_run_id = phantom.playbook("github_repo/analyst_responses", container=container)
 
     return
 
