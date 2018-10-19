@@ -7,7 +7,6 @@
             "clean": true,
             "code_block": "import requests",
             "description": "",
-            "hash": "f9ddb374ed6b79dbaea72b8cef430dc265d7175b",
             "joint": {
                 "cells": [
                     {
@@ -496,8 +495,8 @@
                             }
                         },
                         "position": {
-                            "x": 1080,
-                            "y": 460
+                            "x": 1060,
+                            "y": 360
                         },
                         "previous_function": "",
                         "previous_name": "",
@@ -769,7 +768,7 @@
                                 "opacity": 1
                             },
                             "g.delete": {
-                                "display": "block"
+                                "display": "none"
                             },
                             "g.error": {
                                 "opacity": 0
