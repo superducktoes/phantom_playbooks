@@ -45,7 +45,7 @@ def get_case_note_count(action=None, success=None, container=None, results=None,
     notes_counter = 0
     for i in r["data"][0]["tasks"]:
         phantom.debug(i)
-        if i["notes"]:
+        if i["status"] == 1:
             notes_counter = notes_counter + 1
     
     artifacts_created = []
@@ -184,11 +184,10 @@ def on_finish(container, summary):
     # This function is called after all actions are completed.
     # summary of all the action and/or all detals of actions 
     # can be collected here.
-
     artifacts_created = phantom.get_data(save_data_key[0],clear_data=True)
     for i in artifacts_created:
         phantom.delete_artifact(artifact_id=i)
-
+        
     # summary_json = phantom.get_summary()
     # if 'result' in summary_json:
         # for action_result in summary_json['result']:
