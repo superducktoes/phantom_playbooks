@@ -17,8 +17,8 @@ save_data_key = []
 def on_start(container):
     phantom.debug('on_start() called')
     
-    # call 'promote_to_case_1' block
-    promote_to_case_1(container=container)
+    # call 'join_promote_to_case_1' block
+    join_promote_to_case_1(container=container)
 
     return
 
@@ -26,8 +26,19 @@ def promote_to_case_1(action=None, success=None, container=None, results=None, h
     phantom.debug('promote_to_case_1() called')
 
     phantom.promote(container=container, template="responses")
-    join_get_case_note_count(container=container)
+    get_case_note_count(container=container)
 
+    return
+
+def join_promote_to_case_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None):
+    phantom.debug('join_promote_to_case_1() called')
+
+    # check if all connected incoming actions are done i.e. have succeeded or failed
+    if phantom.actions_done([ 'prompt_1' ]):
+        
+        # call connected block "promote_to_case_1"
+        promote_to_case_1(container=container, handle=handle)
+    
     return
 
 def get_case_note_count(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None):
@@ -69,17 +80,6 @@ def get_case_note_count(action=None, success=None, container=None, results=None,
         save_data_key.append(phantom.save_data(artifacts_created, key=None))
         prompt_1(container=container)
         
-    return
-
-def join_get_case_note_count(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None):
-    phantom.debug('join_get_case_note_count() called')
-
-    # check if all connected incoming actions are done i.e. have succeeded or failed
-    if phantom.actions_done([ 'prompt_1' ]):
-        
-        # call connected block "get_case_note_count"
-        get_case_note_count(container=container, handle=handle)
-    
     return
 
 def send_email_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None):
@@ -160,7 +160,7 @@ def decision_2(action=None, success=None, container=None, results=None, handle=N
         return
 
     # call connected blocks for 'else' condition 2
-    join_get_case_note_count(action=action, success=success, container=container, results=results, handle=handle)
+    join_promote_to_case_1(action=action, success=success, container=container, results=results, handle=handle)
 
     return
 
