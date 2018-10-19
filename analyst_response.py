@@ -173,7 +173,7 @@ def on_finish(container, summary):
     # This function is called after all actions are completed.
     # summary of all the action and/or all detals of actions 
     # can be collected here.
-    phantom.debug(save_data_key[0])
+
     artifacts_created = phantom.get_data(save_data_key[0],clear_data=True)
     for i in artifacts_created:
         phantom.delete_artifact(artifact_id=i)
