@@ -9,6 +9,7 @@ from datetime import datetime, timedelta
 # Start - Global Code Block
 
 import requests
+save_data_key = ""
 
 # End - Global Code block
 ##############################
@@ -46,7 +47,8 @@ def get_case_note_count(action=None, success=None, container=None, results=None,
         phantom.debug(i)
         if i["notes"]:
             notes_counter = notes_counter + 1
-
+    
+    artifacts_created = []
     # if all the fields are filled out prompt before emailing, if not sleep and check again
     if notes_counter != 3:
         no_op_2(container=container, handle=notes_counter)
@@ -61,9 +63,14 @@ def get_case_note_count(action=None, success=None, container=None, results=None,
                 name='container note', severity='low',
                 identifier=None,
                 artifact_type='note')
-        
+            
+            artifacts_created.append(artifact_id)
+            
+        save_data_key = phantom.save_data(artifacts_created, key=None)
+        phantom.debug(save_data_key)
+        phantom.clear(save_data_key)
         prompt_1(container=container)
-
+        
     return
 
 def send_email_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None):
