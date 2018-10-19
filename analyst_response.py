@@ -81,7 +81,7 @@ def send_email_1(action=None, success=None, container=None, results=None, handle
     formatted_data_1 = phantom.get_format_data(name='format_1')
 
     parameters = []
-    phantom.error(save_data_key)
+    
     # build parameters list for 'send_email_1' call
     parameters.append({
         'body': formatted_data_1,
@@ -135,7 +135,7 @@ def prompt_1(action=None, success=None, container=None, results=None, handle=Non
 
 def decision_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None):
     phantom.debug('decision_2() called')
-
+    phantom.error(save_data_key)
     # check for 'if' condition 1
     matched_artifacts_1, matched_results_1 = phantom.condition(
         container=container,
