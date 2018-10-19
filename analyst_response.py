@@ -68,7 +68,6 @@ def get_case_note_count(action=None, success=None, container=None, results=None,
             
         save_data_key = phantom.save_data(artifacts_created, key=None)
         phantom.debug(save_data_key)
-        phantom.clear_data(save_data_key)
         prompt_1(container=container)
         
     return
@@ -175,6 +174,8 @@ def on_finish(container, summary):
     # This function is called after all actions are completed.
     # summary of all the action and/or all detals of actions 
     # can be collected here.
+    artifacts_created = phantom.get_data(save_data_key, clear_data=True)
+    phantom.debug(artifacts_created)
 
     # summary_json = phantom.get_summary()
     # if 'result' in summary_json:
