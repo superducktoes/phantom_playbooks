@@ -7,7 +7,7 @@
             "clean": true,
             "code_block": "import requests\nsave_data_key = []",
             "description": "",
-            "hash": "82cc3b614bb3483738e0dccdff30e36d96c8e185",
+            "hash": "ec6e5bb0b9a7f1264f0173ed6d67c4af50abce15",
             "joint": {
                 "cells": [
                     {
@@ -495,7 +495,7 @@
                                 "opacity": 1
                             },
                             "g.delete": {
-                                "display": "none"
+                                "display": "block"
                             },
                             "g.error": {
                                 "opacity": 0
@@ -2240,170 +2240,6 @@
                         "z": 222
                     },
                     {
-                        "active": false,
-                        "angle": 0,
-                        "attrs": {
-                            ".background": {
-                                "fill": "#000000",
-                                "stroke": "#5C6773"
-                            },
-                            ".color-band": {
-                                "fill": "#3C444D"
-                            },
-                            ".inPorts>.port-in": {
-                                "ref": ".background",
-                                "ref-x": 0.5
-                            },
-                            ".inPorts>.port-in>.port-body": {
-                                "port": {
-                                    "id": "in",
-                                    "type": "in"
-                                }
-                            },
-                            ".message": {
-                                "opacity": 0,
-                                "ref-x": 5,
-                                "ref-y": 105,
-                                "text": "Configuring now"
-                            },
-                            ".outPorts>.port-out": {
-                                "ref": ".background",
-                                "ref-x": 0.5
-                            },
-                            ".outPorts>.port-out>.port-body": {
-                                "port": {
-                                    "id": "out",
-                                    "type": "out"
-                                }
-                            },
-                            ".playbook": {
-                                "text": "github_repo/analyst_res..."
-                            },
-                            ".title": {
-                                "text": "Playbook"
-                            },
-                            "g.code image": {
-                                "opacity": 1,
-                                "xlink:href": "/inc/coa/img/block_icon_code_dark_on.svg"
-                            },
-                            "g.delete": {
-                                "display": "none"
-                            },
-                            "g.error": {
-                                "opacity": 0
-                            },
-                            "g.error image": {
-                                "xlink:href": "/inc/coa/img/block_icon_warn.svg"
-                            },
-                            "g.notes": {
-                                "display": "block"
-                            }
-                        },
-                        "block_code": "# read-only block view not available",
-                        "callback_code": "",
-                        "callback_start": 1,
-                        "callsback": false,
-                        "connected_to_start": true,
-                        "connection_name": "prompt",
-                        "connection_type": "action",
-                        "custom_callback": "",
-                        "custom_code": "def playbook_github_repo_analyst_responses_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None):\n    phantom.debug('playbook_github_repo_analyst_responses_1() called')\n    \n    # delete the artifacts created before re-calling the playbook\n    artifacts_created = phantom.get_data(save_data_key[0],clear_data=True)\n    for i in artifacts_created:\n        phantom.delete_artifact(artifact_id=i)\n        \n    # call playbook \"github_repo/analyst_responses\", returns the playbook_run_id\n    playbook_run_id = phantom.playbook(\"github_repo/analyst_response\", container=container)\n\n    return",
-                        "custom_join": "",
-                        "custom_name": "",
-                        "description": "",
-                        "has_custom": false,
-                        "has_custom_block": true,
-                        "has_custom_callback": false,
-                        "has_custom_join": false,
-                        "id": "e0d9cc03-4311-4803-be8b-17664d10348a",
-                        "inPorts": [
-                            "in"
-                        ],
-                        "join_code": "",
-                        "join_optional": [],
-                        "join_start": 1,
-                        "line_end": 204,
-                        "line_start": 191,
-                        "message": "Configuring now",
-                        "name": "github_repo/analyst_responses",
-                        "notes": "",
-                        "number": 1,
-                        "order": 9,
-                        "outPorts": [
-                            "out"
-                        ],
-                        "playbook": "github_repo/analyst_responses",
-                        "ports": {
-                            "groups": {
-                                "in": {
-                                    "attrs": {
-                                        ".port-body": {
-                                            "fill": "#fff",
-                                            "magnet": true,
-                                            "r": 10,
-                                            "stroke": "#000"
-                                        },
-                                        ".port-label": {
-                                            "fill": "#000"
-                                        }
-                                    },
-                                    "label": {
-                                        "position": {
-                                            "args": {
-                                                "y": 10
-                                            },
-                                            "name": "left"
-                                        }
-                                    },
-                                    "position": {
-                                        "name": "left"
-                                    }
-                                },
-                                "out": {
-                                    "attrs": {
-                                        ".port-body": {
-                                            "fill": "#fff",
-                                            "magnet": true,
-                                            "r": 10,
-                                            "stroke": "#000"
-                                        },
-                                        ".port-label": {
-                                            "fill": "#000"
-                                        }
-                                    },
-                                    "label": {
-                                        "position": {
-                                            "args": {
-                                                "y": 10
-                                            },
-                                            "name": "right"
-                                        }
-                                    },
-                                    "position": {
-                                        "name": "right"
-                                    }
-                                }
-                            }
-                        },
-                        "position": {
-                            "x": 780,
-                            "y": 340
-                        },
-                        "previous_function": "",
-                        "previous_name": "playbook_github_repo_analyst_responses_1",
-                        "show_number": false,
-                        "size": {
-                            "height": 100,
-                            "width": 180
-                        },
-                        "state": "callplaybook",
-                        "status": "",
-                        "title": "Playbook",
-                        "type": "coa.CallPlaybook",
-                        "warn": false,
-                        "z": 226
-                    },
-                    {
                         "action": "send email",
                         "action_type": "generic",
                         "active": false,
@@ -2791,6 +2627,170 @@
                         "type": "coa.Action",
                         "warn": false,
                         "z": 227
+                    },
+                    {
+                        "active": false,
+                        "angle": 0,
+                        "attrs": {
+                            ".background": {
+                                "fill": "#000000",
+                                "stroke": "#5C6773"
+                            },
+                            ".color-band": {
+                                "fill": "#3C444D"
+                            },
+                            ".inPorts>.port-in": {
+                                "ref": ".background",
+                                "ref-x": 0.5
+                            },
+                            ".inPorts>.port-in>.port-body": {
+                                "port": {
+                                    "id": "in",
+                                    "type": "in"
+                                }
+                            },
+                            ".message": {
+                                "opacity": 0,
+                                "ref-x": 5,
+                                "ref-y": 105,
+                                "text": "Configuring now"
+                            },
+                            ".outPorts>.port-out": {
+                                "ref": ".background",
+                                "ref-x": 0.5
+                            },
+                            ".outPorts>.port-out>.port-body": {
+                                "port": {
+                                    "id": "out",
+                                    "type": "out"
+                                }
+                            },
+                            ".playbook": {
+                                "text": "github_repo/analyst_res..."
+                            },
+                            ".title": {
+                                "text": "Playbook"
+                            },
+                            "g.code image": {
+                                "opacity": 1,
+                                "xlink:href": "/inc/coa/img/block_icon_code_dark_on.svg"
+                            },
+                            "g.delete": {
+                                "display": "none"
+                            },
+                            "g.error": {
+                                "opacity": 0
+                            },
+                            "g.error image": {
+                                "xlink:href": "/inc/coa/img/block_icon_error.svg"
+                            },
+                            "g.notes": {
+                                "display": "block"
+                            }
+                        },
+                        "block_code": "# read-only block view not available",
+                        "callback_code": "",
+                        "callback_start": 1,
+                        "callsback": false,
+                        "connected_to_start": true,
+                        "connection_name": "prompt",
+                        "connection_type": "action",
+                        "custom_callback": "",
+                        "custom_code": "def playbook_github_repo_analyst_responses_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None):\n    phantom.debug('playbook_github_repo_analyst_responses_1() called')\n    \n    # delete the artifacts created before re-calling the playbook\n    artifacts_created = phantom.get_data(save_data_key[0],clear_data=True)\n    for i in artifacts_created:\n        phantom.delete_artifact(artifact_id=i)\n    del save_data_key[0]\n    # call playbook \"github_repo/analyst_responses\", returns the playbook_run_id\n    playbook_run_id = phantom.playbook(\"github_repo/analyst_response\", container=container)\n\n    return",
+                        "custom_join": "",
+                        "custom_name": "",
+                        "description": "",
+                        "has_custom": false,
+                        "has_custom_block": true,
+                        "has_custom_callback": false,
+                        "has_custom_join": false,
+                        "id": "e0d9cc03-4311-4803-be8b-17664d10348a",
+                        "inPorts": [
+                            "in"
+                        ],
+                        "join_code": "",
+                        "join_optional": [],
+                        "join_start": 1,
+                        "line_end": 204,
+                        "line_start": 191,
+                        "message": "Configuring now",
+                        "name": "github_repo/analyst_responses",
+                        "notes": "",
+                        "number": 1,
+                        "order": 9,
+                        "outPorts": [
+                            "out"
+                        ],
+                        "playbook": "github_repo/analyst_responses",
+                        "ports": {
+                            "groups": {
+                                "in": {
+                                    "attrs": {
+                                        ".port-body": {
+                                            "fill": "#fff",
+                                            "magnet": true,
+                                            "r": 10,
+                                            "stroke": "#000"
+                                        },
+                                        ".port-label": {
+                                            "fill": "#000"
+                                        }
+                                    },
+                                    "label": {
+                                        "position": {
+                                            "args": {
+                                                "y": 10
+                                            },
+                                            "name": "left"
+                                        }
+                                    },
+                                    "position": {
+                                        "name": "left"
+                                    }
+                                },
+                                "out": {
+                                    "attrs": {
+                                        ".port-body": {
+                                            "fill": "#fff",
+                                            "magnet": true,
+                                            "r": 10,
+                                            "stroke": "#000"
+                                        },
+                                        ".port-label": {
+                                            "fill": "#000"
+                                        }
+                                    },
+                                    "label": {
+                                        "position": {
+                                            "args": {
+                                                "y": 10
+                                            },
+                                            "name": "right"
+                                        }
+                                    },
+                                    "position": {
+                                        "name": "right"
+                                    }
+                                }
+                            }
+                        },
+                        "position": {
+                            "x": 780,
+                            "y": 340
+                        },
+                        "previous_function": "",
+                        "previous_name": "playbook_github_repo_analyst_responses_1",
+                        "show_number": false,
+                        "size": {
+                            "height": 100,
+                            "width": 180
+                        },
+                        "state": "callplaybook",
+                        "status": "",
+                        "title": "Playbook",
+                        "type": "coa.CallPlaybook",
+                        "warn": false,
+                        "z": 228
                     }
                 ]
             },
@@ -2799,7 +2799,7 @@
         "schema": 3,
         "version": "4.1.94"
     },
-    "create_time": "2018-10-19T05:46:24.428859+00:00",
+    "create_time": "2018-10-19T05:50:33.662278+00:00",
     "draft_mode": false,
     "labels": [
         "*"

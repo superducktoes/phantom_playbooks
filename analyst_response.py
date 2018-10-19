@@ -195,7 +195,7 @@ def playbook_github_repo_analyst_responses_1(action=None, success=None, containe
     artifacts_created = phantom.get_data(save_data_key[0],clear_data=True)
     for i in artifacts_created:
         phantom.delete_artifact(artifact_id=i)
-        
+    del save_data_key[0]
     # call playbook "github_repo/analyst_responses", returns the playbook_run_id
     playbook_run_id = phantom.playbook("github_repo/analyst_response", container=container)
 
