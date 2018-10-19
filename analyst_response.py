@@ -16,7 +16,8 @@ save_data_key = []
 
 def on_start(container):
     phantom.debug('on_start() called')
-    
+    phantom.debug(container.get('container_type', None))
+    phantom.error(container.get('in_case', None))
     # call 'promote_to_case_1' block
     promote_to_case_1(container=container)
 
