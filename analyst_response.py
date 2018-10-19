@@ -47,7 +47,7 @@ def get_case_note_count(action=None, success=None, container=None, results=None,
         phantom.debug(i)
         if i["status"] == 1:
             notes_counter = notes_counter + 1
-    
+    phantom.error(notes_counter)
     artifacts_created = []
     # if all the fields are filled out prompt before emailing, if not sleep and check again
     if notes_counter != 3:
