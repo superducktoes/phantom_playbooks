@@ -39,7 +39,7 @@ def on_start(container):
     # create our json data to post back to phantom
     playbook_json = {
         "container_id": int(take_action_container),
-        "playbook_id": "local/cdm_dashboard",
+        "playbook_id": "local/Investigate Email",
         "scope": "all",
         "run": True
     }
@@ -56,6 +56,7 @@ def on_start(container):
                                      headers=headers,
                                      verify = False).json()
         phantom.debug(run_playbook)
+        phantom.set_status(container=container, status="resolved")
     
     
     return
