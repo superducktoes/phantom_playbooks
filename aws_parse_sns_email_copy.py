@@ -48,6 +48,8 @@ def on_start(container):
     else:
         phantom.debug("=== not multipart ===")
         phantom.error(b.get_payload())
+        payload = b.get_payload()
+        parse_json(payload)
     
     phantom.error("=== results dict ===")
     phantom.debug(results_dict)
