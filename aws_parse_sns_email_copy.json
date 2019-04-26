@@ -1,0 +1,306 @@
+{
+    "blockly": false,
+    "blockly_xml": "<xml></xml>",
+    "category": "Uncategorized",
+    "coa": {
+        "data": {
+            "clean": false,
+            "code_block": "",
+            "description": "",
+            "hash": "bf154589d41e2b2ee3e92da3a77f6b16cf1216ad",
+            "joint": {
+                "cells": [
+                    {
+                        "0": "E",
+                        "1": "N",
+                        "2": "D",
+                        "active": false,
+                        "angle": 0,
+                        "attrs": {
+                            ".background": {
+                                "fill": "#000000",
+                                "stroke": "#5C6773"
+                            },
+                            ".color-band": {
+                                "fill": "#3C444D"
+                            },
+                            ".inPorts>.port-in": {
+                                "ref": ".background",
+                                "ref-x": 0.5
+                            },
+                            ".inPorts>.port-in>.port-body": {
+                                "port": {
+                                    "id": "in",
+                                    "type": "in"
+                                }
+                            },
+                            ".title": {
+                                "text": "END"
+                            },
+                            "g.delete": {
+                                "display": "none"
+                            },
+                            "g.error": {
+                                "opacity": 0
+                            },
+                            "g.icon image": {
+                                "xlink:href": "/inc/coa/img/block_icon_end.svg"
+                            },
+                            "g.notes": {
+                                "display": "block"
+                            }
+                        },
+                        "block_code": "def on_finish(container, summary):\n    phantom.debug('on_finish() called')\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all detals of actions \n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n    return",
+                        "callback_code": "# read-only block view not available",
+                        "callback_start": 1,
+                        "callsback": false,
+                        "connected_to_start": true,
+                        "custom_callback": "",
+                        "custom_code": "",
+                        "custom_join": "",
+                        "custom_name": "",
+                        "description": "",
+                        "has_custom": false,
+                        "has_custom_block": false,
+                        "has_custom_callback": false,
+                        "has_custom_join": false,
+                        "id": "007674d3-e131-4acc-88cb-d99d87533e2e",
+                        "inPorts": [
+                            "in"
+                        ],
+                        "join_code": "# read-only block view not available",
+                        "join_optional": [],
+                        "join_start": 1,
+                        "line_start": 1,
+                        "name": "",
+                        "notes": "",
+                        "number": 0,
+                        "order": 2,
+                        "outPorts": [],
+                        "ports": {
+                            "groups": {
+                                "in": {
+                                    "attrs": {
+                                        ".port-body": {
+                                            "fill": "#fff",
+                                            "magnet": true,
+                                            "r": 10,
+                                            "stroke": "#000"
+                                        },
+                                        ".port-label": {
+                                            "fill": "#000"
+                                        }
+                                    },
+                                    "label": {
+                                        "position": {
+                                            "args": {
+                                                "y": 10
+                                            },
+                                            "name": "left"
+                                        }
+                                    },
+                                    "position": {
+                                        "name": "left"
+                                    }
+                                },
+                                "out": {
+                                    "attrs": {
+                                        ".port-body": {
+                                            "fill": "#fff",
+                                            "magnet": true,
+                                            "r": 10,
+                                            "stroke": "#000"
+                                        },
+                                        ".port-label": {
+                                            "fill": "#000"
+                                        }
+                                    },
+                                    "label": {
+                                        "position": {
+                                            "args": {
+                                                "y": 10
+                                            },
+                                            "name": "right"
+                                        }
+                                    },
+                                    "position": {
+                                        "name": "right"
+                                    }
+                                }
+                            }
+                        },
+                        "position": {
+                            "x": 640,
+                            "y": 100
+                        },
+                        "previous_function": "",
+                        "previous_name": "",
+                        "show_number": true,
+                        "size": {
+                            "height": 54,
+                            "width": 80
+                        },
+                        "status": "",
+                        "title": "END",
+                        "type": "coa.StartEnd",
+                        "warn": false,
+                        "z": 2
+                    },
+                    {
+                        "0": "S",
+                        "1": "T",
+                        "2": "A",
+                        "3": "R",
+                        "4": "T",
+                        "active": false,
+                        "angle": 0,
+                        "attrs": {
+                            ".background": {
+                                "fill": "#000000",
+                                "stroke": "#5C6773"
+                            },
+                            ".color-band": {
+                                "fill": "#3C444D"
+                            },
+                            ".outPorts>.port-out": {
+                                "ref": ".background",
+                                "ref-x": 0.5
+                            },
+                            ".outPorts>.port-out>.port-body": {
+                                "port": {
+                                    "id": "out",
+                                    "type": "out"
+                                }
+                            },
+                            ".title": {
+                                "ref-x": 33,
+                                "ref-y": 8,
+                                "text": "START"
+                            },
+                            "g.code image": {
+                                "xlink:href": "/inc/coa/img/block_icon_code_dark_on.svg"
+                            },
+                            "g.delete": {
+                                "display": "none"
+                            },
+                            "g.error": {
+                                "opacity": 0
+                            },
+                            "g.icon image": {
+                                "ref-x": 13,
+                                "xlink:href": "/inc/coa/img/block_icon_start.svg"
+                            },
+                            "g.notes": {
+                                "display": "block"
+                            }
+                        },
+                        "block_code": "# read-only block view not available",
+                        "callback_code": "# read-only block view not available",
+                        "callback_start": 1,
+                        "callsback": false,
+                        "connected_to_start": true,
+                        "custom_callback": "",
+                        "custom_code": "def on_start(container):\n    import email\n    phantom.debug('on_start() called')\n    raw_email = json.loads(phantom.get_raw_data(container)).get('raw_email')\n    b = email.message_from_string(raw_email)\n    if b.is_multipart():\n        phantom.debug(b.get_payload()[0])\n        phantom.error(type(b.get_payload()[0]))\n    else:\n        phantom.debug(b.get_payload())\n    return",
+                        "custom_join": "",
+                        "custom_name": "",
+                        "description": "",
+                        "has_custom": true,
+                        "has_custom_block": true,
+                        "has_custom_callback": false,
+                        "has_custom_join": false,
+                        "id": "9c20b3b8-86d1-41fa-ac1a-157ab8c3accd",
+                        "inPorts": [],
+                        "join_code": "# read-only block view not available",
+                        "join_optional": [],
+                        "join_start": 1,
+                        "line_start": 1,
+                        "name": "",
+                        "notes": "",
+                        "number": 0,
+                        "order": 1,
+                        "outPorts": [
+                            "out"
+                        ],
+                        "ports": {
+                            "groups": {
+                                "in": {
+                                    "attrs": {
+                                        ".port-body": {
+                                            "fill": "#fff",
+                                            "magnet": true,
+                                            "r": 10,
+                                            "stroke": "#000"
+                                        },
+                                        ".port-label": {
+                                            "fill": "#000"
+                                        }
+                                    },
+                                    "label": {
+                                        "position": {
+                                            "args": {
+                                                "y": 10
+                                            },
+                                            "name": "left"
+                                        }
+                                    },
+                                    "position": {
+                                        "name": "left"
+                                    }
+                                },
+                                "out": {
+                                    "attrs": {
+                                        ".port-body": {
+                                            "fill": "#fff",
+                                            "magnet": true,
+                                            "r": 10,
+                                            "stroke": "#000"
+                                        },
+                                        ".port-label": {
+                                            "fill": "#000"
+                                        }
+                                    },
+                                    "label": {
+                                        "position": {
+                                            "args": {
+                                                "y": 10
+                                            },
+                                            "name": "right"
+                                        }
+                                    },
+                                    "position": {
+                                        "name": "right"
+                                    }
+                                }
+                            }
+                        },
+                        "position": {
+                            "x": 100,
+                            "y": 100
+                        },
+                        "previous_function": "",
+                        "previous_name": "",
+                        "show_number": true,
+                        "size": {
+                            "height": 54,
+                            "width": 80
+                        },
+                        "status": "",
+                        "title": "START",
+                        "type": "coa.StartEnd",
+                        "warn": false,
+                        "z": 17
+                    }
+                ]
+            },
+            "notes": ""
+        },
+        "schema": 3,
+        "version": "4.2.7532"
+    },
+    "create_time": "2019-04-26T14:27:13.677095+00:00",
+    "draft_mode": false,
+    "labels": [
+        "*"
+    ],
+    "tags": []
+}
