@@ -16,7 +16,9 @@ def add_results_to_container(container):
         identifier=None,
         artifact_type='aws')
     
+    phantom.error("=== success/error status message ===")
     phantom.debug(success)
+    phantom.error(message)
     return success
 
 # parse and flatten the json to store in results_dict
@@ -40,10 +42,14 @@ def on_start(container):
         for part in email_message.walk():
             payload = part.get_payload() #returns a bytes object
             payload = json.loads(payload, strict=False)
+            phantom.error("=== email payload ===")
+            phantom.debug(payload)
             parse_json(payload)
     else:
+        phantom.debug("=== not multipart ===")
         phantom.error(b.get_payload())
-        
+    
+    phantom.error("=== results dict ===")
     phantom.debug(results_dict)
     add_results_to_container(container)
     return
