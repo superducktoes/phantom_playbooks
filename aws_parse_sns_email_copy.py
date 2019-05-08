@@ -39,6 +39,8 @@ def on_start(container):
     # parse the email to get the body of the email
     if b.is_multipart():
         email_message = b.get_payload()[0]
+        for payload in b.get_payload():
+            phantom.debug(payload.get_payload())
         for part in email_message.walk():
             payload = part.get_payload() #returns a bytes object
             payload = json.loads(payload, strict=False)
