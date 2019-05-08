@@ -35,8 +35,8 @@ def on_start(container):
     import email
     phantom.debug('on_start() called')
     raw_email = json.loads(phantom.get_raw_data(container)).get('raw_email')
-    phantom.error(raw_email)
     b = email.message_from_string(raw_email)
+    phantom.error(b)
     # parse the email to get the body of the email
     if b.is_multipart():
         email_message = b.get_payload()[0]
