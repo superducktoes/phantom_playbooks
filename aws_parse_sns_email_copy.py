@@ -33,6 +33,8 @@ def parse_json(d):
             
 def on_start(container):
     import email
+    email_body = phantom.collect2(container=container, datapath=['artifact:*.cef.bodyText'])
+    phantom.error(email_body)
     phantom.debug('on_start() called')
     raw_email = json.loads(phantom.get_raw_data(container)).get('raw_email')
     b = email.message_from_string(raw_email)
