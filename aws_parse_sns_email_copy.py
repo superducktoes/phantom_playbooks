@@ -39,11 +39,10 @@ def on_start(container):
     # parse the email to get the body of the email
     if b.is_multipart():
         email_message = b.get_payload()[0]
-        phantom.debug(email_message)
         for part in email_message.walk():
             payload = part.get_payload() #returns a bytes object
-            phantom.error(payload)
             payload = json.loads(payload, strict=False)
+            phantom.error(payload)
             phantom.error("=== email payload ===")
             phantom.debug(payload)
             parse_json(payload)
